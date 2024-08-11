@@ -38,7 +38,16 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+    morseStr = expr
+        .match(/.{1,10}/g)
+        .map(el=> el.match(/.{1,2}/g))
+        .map(el => el
+            .filter(val => val != '00')
+            .map(val => val == '10' ? '.': val == '11' ? '-' : '')
+            )
+        .map(el=> el.join(''))
+        .map(el => MORSE_TABLE[el] || ' ')
+        .join('')
 }
 
 module.exports = {
