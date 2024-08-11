@@ -48,6 +48,9 @@ function decode(expr) {
         .map(el=> el.join(''))
         .map(el => MORSE_TABLE[el] || ' ')
         .join('')
+        .trim()
+
+        return morseStr
 }
 
 module.exports = {
